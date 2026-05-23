@@ -56,12 +56,12 @@ pipeline {
             }
         }
 
-        stage('Optional: Restart Nginx') {
-            steps {
-                // 通常静态文件替换无需重启，仅当需要时取消注释
-                // sh 'sudo systemctl reload nginx'
-            }
-        }
+        // stage('Optional: Restart Nginx') {
+        //     steps {
+        //         // 通常静态文件替换无需重启，仅当需要时取消注释
+        //         // sh 'sudo systemctl reload nginx'
+        //     }
+        // }
     }
 
     post {
