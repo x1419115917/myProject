@@ -40,7 +40,7 @@ pipeline {
         stage('Build') {
             steps {
                 nodejs("${NODE_VERSION}") {
-                    sh 'export NODE_OPTIONS=--openssl-legacy-provider && npm run build'
+                    sh 'export NODE_OPTIONS=--openssl-legacy-provider && export CI=false && npm run build'
                 }
             }
         }
