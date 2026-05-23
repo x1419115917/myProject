@@ -32,7 +32,7 @@ pipeline {
             steps {
                 // 使用 NodeJS 环境执行 npm install
                 nodejs("${NODE_VERSION}") {
-                    sh 'npm install'
+                    sh 'npm install --registry=https://registry.npmmirror.com'
                 }
             }
         }
