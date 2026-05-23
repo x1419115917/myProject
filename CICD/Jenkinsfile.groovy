@@ -10,10 +10,10 @@ pipeline {
         BRANCH = 'master'
     }
 
-    triggers {
-        // 每 5 分钟检查一次 Git 仓库更新，有更新则自动触发（Poll SCM）
-        pollSCM('H/5 * * * *')
-    }
+    // triggers {
+    //     // 每 5 分钟检查一次 Git 仓库更新，有更新则自动触发（Poll SCM）
+    //     pollSCM('H/5 * * * *')
+    // }
 
     stages {
         stage('Checkout') {
