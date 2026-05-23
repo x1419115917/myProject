@@ -22,7 +22,7 @@ pipeline {
                     branches: [[name: "${BRANCH}"]],
                     userRemoteConfigs: [[
                         url: "${GIT_REPO}",
-                        credentialsId: 'gitee-credentials'  // 需要在 Jenkins 中配置 Gitee 凭据，若公开仓库可省略
+                        // credentialsId: 'gitee-credentials'  // 需要在 Jenkins 中配置 Gitee 凭据，若公开仓库可省略
                     ]]
                 ])
             }
