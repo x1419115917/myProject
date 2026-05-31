@@ -1,47 +1,53 @@
-// import logo from './logo.svg';
+import React from 'react';
 import './App.css';
-import React, { useState,useEffect, useCallback,useRef } from "react";
-import { Button,Table, Tag, Space,Input } from 'antd';
-
-// import Content from './content/content';
+import './blog.css';
+import Header from './components/Header';
+import PostList from './components/PostList';
+import Sidebar from './components/Sidebar';
+import Footer from './components/Footer';
+import HomeHero from './components/HomeHero';
 
 function App() {
-  const [n,setN] = useState(100);
-  const [obj,setObj] = useState({});
-  const [name, setName] = useState('dx');
-  const [state, setState] = useState({
-    username: '张三',
-    age: 18
-})
-  const handleValidate = useCallback(()=>{
-    // console.log(123)
-  },[])
-  const handleMaxRestoreUp = useCallback((e)=>{
-    let reg = /[^\a-\z\A-\Z]/;
-    let a = e.target.value
-    console.log('handleMaxRestoreUp',e.key.replace(/[^\a-\z\A-\Z]/g,""))
-    // console.log('handleMaxRestoreUp',reg.test(e.key))
-  },[])
+  const posts = [
+    {
+      id: 1,
+      title: '欢迎来到我的博客',
+      date: '2026-05-31',
+      readTime: '5 分钟',
+      excerpt: '这是一个示例文章，用来展示博客界面的样式与布局。',
+      tags: ['入门','分享']
+    },
+    {
+      id: 2,
+      title: '前端进阶路线',
+      date: '2026-04-20',
+      readTime: '8 分钟',
+      excerpt: '本文总结了成为高级前端工程师的学习路径与实践建议。',
+      tags: ['前端','学习']
+    },
+    {
+      id: 3,
+      title: '性能优化最佳实践',
+      date: '2026-03-10',
+      readTime: '6 分钟',
+      excerpt: '介绍若干常见性能问题与解决方案，帮助你的应用跑得更快。',
+      tags: ['性能','优化']
+    }
+  ];
 
+  const recent = posts.slice(0,3);
 
-  useEffect(()=>{
-    // handleTest();
-    // getData({newapge:12,y:14});
-  },[])
   return (
     <div className="App">
-      <div className='wrap'>
-        {/* <Table columns={columns} dataSource={data} /> */}
-        {/* 1.GOLIVE VoP succesfully and Will investigate the root cause during SHP change 
-            2.pay attention AWS/SHP/embargo any notify email
-        */}
+      <HomeHero />
+      <Header />
+      <div id="posts" className="container layout">
+        <PostList posts={posts} />
+        <Sidebar recent={recent} />
       </div>
-      {/* <Button type="primary" onClick={handleClick}>Primary Button</Button> */}
-      <Button type="primary">111111</Button>
-      <Input onChange={handleValidate} onKeyUp={(event )=>{handleMaxRestoreUp(event)}} placeholder="Basic usage" />
+      <Footer />
     </div>
   );
 }
-
 
 export default App;
