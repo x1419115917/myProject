@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        nodejs 'Node16'
+        nodejs 'NodeJS-18'
     }
 
     environment {
@@ -28,22 +28,26 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 echo '>>>> 安装依赖'
-                sh '''
-                    node -v
-                    npm -v
-                    if [ -f package-lock.json ]; then
-                        npm ci --no-audit --no-fund
-                    else
-                        npm install --no-audit --no-fund
-                    fi
-                '''
+                nodejs('NodeJS-18') {
+                    sh '''
+                        node -v
+                        npm -v
+                        if [ -f package-lock.json ]; then
+                            npm ci --no-audit --no-fund
+                        else
+                            npm install --no-audit --no-fund
+                        fi
+                    '''
+                }
             }
         }
 
         stage('Build') {
             steps {
                 echo '>>>> 执行前端构建'
-                sh 'npm run build'
+                nodejs('NodeJS-18') {
+                    sh 'npm run build'
+                }
             }
         }
 
