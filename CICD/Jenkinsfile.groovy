@@ -32,11 +32,7 @@ pipeline {
                     sh '''
                         node -v
                         npm -v
-                        if [ -f package-lock.json ]; then
-                            npm ci --no-audit --no-fund
-                        else
-                            npm install --no-audit --no-fund
-                        fi
+                        npm install --no-audit --no-fund --registry=https://registry.npmmirror.com
                     '''
                 }
             }
