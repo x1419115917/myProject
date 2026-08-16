@@ -7,7 +7,8 @@ pipeline {
 
     environment {
         CI = 'true'
-        NODE_ENV = 'production'
+        // 不能设置成 production，否则 devDependencies 不会安装，cross-env 会缺失
+        NODE_ENV = 'development'
         NODE_OPTIONS = '--openssl-legacy-provider --max-old-space-size=4096'
     }
 
@@ -32,7 +33,7 @@ pipeline {
                     sh '''
                         node -v
                         npm -v
-                        npm install --no-audit --no-fund --registry=https://registry.npmmirror.com
+                        npm install --include=dev --no-audit --no-fund --registry=https://registry.npmmirror.com
                     '''
                 }
             }
