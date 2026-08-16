@@ -59,7 +59,7 @@ pipeline {
             steps {
                 echo '>>>> 发布静态文件'
                 sh '''
-                    DEPLOY_DIR="/var/www/hello-react"
+                    DEPLOY_DIR="/var/www/my-website"
                     mkdir -p "$DEPLOY_DIR"
                     rm -rf "$DEPLOY_DIR"/*
                     cp -r build/* "$DEPLOY_DIR"/
